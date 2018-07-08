@@ -37,13 +37,14 @@
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.lblKapanis = new System.Windows.Forms.Label();
             this.lblHacim = new System.Windows.Forms.Label();
-            this.lblEma21 = new System.Windows.Forms.Label();
+            this.lblSma21 = new System.Windows.Forms.Label();
             this.btnAlfabetikSiralama = new System.Windows.Forms.Button();
             this.lbIslenenCoinAdet = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnTemizle = new System.Windows.Forms.Button();
             this.lbKapanisOnceki = new System.Windows.Forms.Label();
             this.btnHacimselSiralama = new System.Windows.Forms.Button();
+            this.lbSinyalAdet = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBaslat
@@ -127,14 +128,14 @@
             this.lblHacim.TabIndex = 7;
             this.lblHacim.Text = "Hacim:";
             // 
-            // lblEma21
+            // lblSma21
             // 
-            this.lblEma21.AutoSize = true;
-            this.lblEma21.Location = new System.Drawing.Point(807, 494);
-            this.lblEma21.Name = "lblEma21";
-            this.lblEma21.Size = new System.Drawing.Size(43, 13);
-            this.lblEma21.TabIndex = 8;
-            this.lblEma21.Text = "Ema21:";
+            this.lblSma21.AutoSize = true;
+            this.lblSma21.Location = new System.Drawing.Point(807, 494);
+            this.lblSma21.Name = "lblSma21";
+            this.lblSma21.Size = new System.Drawing.Size(43, 13);
+            this.lblSma21.TabIndex = 8;
+            this.lblSma21.Text = "Sma21:";
             // 
             // btnAlfabetikSiralama
             // 
@@ -158,7 +159,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(810, 536);
+            this.checkBox1.Location = new System.Drawing.Point(810, 552);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 11;
@@ -194,17 +195,27 @@
             this.btnHacimselSiralama.UseVisualStyleBackColor = true;
             this.btnHacimselSiralama.Click += new System.EventHandler(this.btnHacimselSiralama_Click);
             // 
+            // lbSinyalAdet
+            // 
+            this.lbSinyalAdet.AutoSize = true;
+            this.lbSinyalAdet.Location = new System.Drawing.Point(807, 521);
+            this.lbSinyalAdet.Name = "lbSinyalAdet";
+            this.lbSinyalAdet.Size = new System.Drawing.Size(63, 13);
+            this.lbSinyalAdet.TabIndex = 13;
+            this.lbSinyalAdet.Text = "Sinyal Adet:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1077, 801);
+            this.Controls.Add(this.lbSinyalAdet);
             this.Controls.Add(this.btnTemizle);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lbIslenenCoinAdet);
             this.Controls.Add(this.btnHacimselSiralama);
             this.Controls.Add(this.btnAlfabetikSiralama);
-            this.Controls.Add(this.lblEma21);
+            this.Controls.Add(this.lblSma21);
             this.Controls.Add(this.lblHacim);
             this.Controls.Add(this.lbKapanisOnceki);
             this.Controls.Add(this.lblKapanis);
@@ -231,13 +242,14 @@
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.Label lblKapanis;
         private System.Windows.Forms.Label lblHacim;
-        private System.Windows.Forms.Label lblEma21;
+        private System.Windows.Forms.Label lblSma21;
         private System.Windows.Forms.Button btnAlfabetikSiralama;
         private System.Windows.Forms.Label lbIslenenCoinAdet;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btnTemizle;
         private System.Windows.Forms.Label lbKapanisOnceki;
         private System.Windows.Forms.Button btnHacimselSiralama;
+        private System.Windows.Forms.Label lbSinyalAdet;
     }
 }
 

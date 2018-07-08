@@ -55,6 +55,7 @@ namespace CryptoTradingBot.WinForms
             lbSinyaller.Items.Clear();
             lbHatalar.Items.Clear();
             label_BinanceListelenenCoinAdet.Yazdir(string.Empty);
+            lbIslenenCoinAdet.Yazdir(string.Empty);
             Task.Run(() =>
             {
                 using (var binanceClient = new BinanceClient())
@@ -78,6 +79,9 @@ namespace CryptoTradingBot.WinForms
                 MessageBox.Show("Kaydedildi");
 
             });
+
+            lbSinyalAdet.Yazdir(_kayitlar.Count().ToString());
+
         }
 
         private void _analizEt(string sembol)
@@ -120,8 +124,8 @@ namespace CryptoTradingBot.WinForms
                 coinData.Closes4Saatlik.Add(candleData.Close);
                 coinData.Volumes4Saatlik.Add(candleData.VolumeTo);
             }     
-            var ema21 = coinData.Closes4Saatlik.Ema(21);
-            if (coinData.Closes4Saatlik.Any() && ema21.Any() && coinData.Closes4Saatlik.Last() > ema21.Last())
+            var sma21 = coinData.Closes4Saatlik.Sma(21);
+            if (coinData.Closes4Saatlik.Any() && sma21.Any() && coinData.Closes4Saatlik.Last() > sma21.Last())
             {
                 lbSinyaller.Yazdir(sembol);
                 kayilardaYoksaEkleVarsaGuncelle(coinData);
@@ -191,7 +195,7 @@ namespace CryptoTradingBot.WinForms
                     _listeyeEkle(_ema21Listesi, zedGraphControl1, i, Convert.ToDouble(ema21[i]));
                     //_listeyeEkle(_hacimListesi, zedGraphControl1, i, Convert.ToDouble(hacimler[i]));
                 }
-                lblEma21.Yazdir((ema21.LastOrDefault() ?? 0.0m).ToString("0.000000000"));
+                lblSma21.Yazdir((ema21.LastOrDefault() ?? 0.0m).ToString("0.000000000"));
                 lblKapanis.Yazdir(closes4Satlik.Last().ToString("0.000000000"));
                 lbKapanisOnceki.Yazdir(closes4Satlik[count - 2].ToString("0.000000000"));
                 lblHacim.Yazdir(hacimler.Last().ToString("0.000000000"));
@@ -224,6 +228,7 @@ namespace CryptoTradingBot.WinForms
             {
                 lbSinyaller.Items.Add(item.Sembol);
             }
+            lbSinyalAdet.Yazdir(temp.Count().ToString());
         }
 
         private void lbSinyaller_SelectedIndexChanged(object sender, EventArgs e)
@@ -266,6 +271,7 @@ namespace CryptoTradingBot.WinForms
             {
                 lbSinyaller.Items.Add(item.Sembol);
             }
+            lbSinyalAdet.Yazdir(temp.Count().ToString());
         }
     }
 
