@@ -1,18 +1,16 @@
-﻿using Binance.Net;
-using CryptoCompare;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Binance.Net;
+using CryptoCompare;
 using Trady.Analysis;
 using ZedGraph;
+
 
 namespace CryptoTradingBot.WinForms
 {
@@ -188,14 +186,14 @@ namespace CryptoTradingBot.WinForms
                 _close4Listesi.Clear();
                 _ema21Listesi.Clear();
                 var count = closes4Satlik.Count;
-                var ema21 = closes4Satlik.Ema(21);
+                var sma21 = closes4Satlik.Sma(21);
                 for (int i = 0; i < count; i++)
                 {
                     _listeyeEkle(_close4Listesi, zedGraphControl1, i, Convert.ToDouble(closes4Satlik[i]));
-                    _listeyeEkle(_ema21Listesi, zedGraphControl1, i, Convert.ToDouble(ema21[i]));
+                    _listeyeEkle(_ema21Listesi, zedGraphControl1, i, Convert.ToDouble(sma21[i]));
                     //_listeyeEkle(_hacimListesi, zedGraphControl1, i, Convert.ToDouble(hacimler[i]));
                 }
-                lblSma21.Yazdir((ema21.LastOrDefault() ?? 0.0m).ToString("0.000000000"));
+                lblSma21.Yazdir((sma21.LastOrDefault() ?? 0.0m).ToString("0.000000000"));
                 lblKapanis.Yazdir(closes4Satlik.Last().ToString("0.000000000"));
                 lbKapanisOnceki.Yazdir(closes4Satlik[count - 2].ToString("0.000000000"));
                 lblHacim.Yazdir(hacimler.Last().ToString("0.000000000"));
