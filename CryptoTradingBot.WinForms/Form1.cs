@@ -19,7 +19,7 @@ namespace CryptoTradingBot.WinForms
         private static int _limit = 987;
         private Dictionary<string, Kayit> _kayitlar = new Dictionary<string, Kayit>();
         private readonly object lockerKayitlar = new object();
-        private readonly RollingPointPairList _ema21Listesi = new RollingPointPairList(_limit);
+        private readonly RollingPointPairList _sma21Listesi = new RollingPointPairList(_limit);
         private long _sayac;
         private readonly RollingPointPairList _close4Listesi = new RollingPointPairList(_limit);
         private readonly string _dosyaAdi = "kayitlar.bin";
@@ -29,7 +29,7 @@ namespace CryptoTradingBot.WinForms
         {
             InitializeComponent();
             LineItem closes = new LineItem("Closes4", _close4Listesi, Color.Blue, SymbolType.None, 2f);
-            LineItem ema21 = new LineItem("Ema21", _ema21Listesi, Color.Red, SymbolType.None, 2f);
+            LineItem ema21 = new LineItem("Sma21", _sma21Listesi, Color.Red, SymbolType.None, 2f);
             //BarItem hacim = new BarItem("Hacim", _hacimListesi, Color.Red);
             zedGraphControl1.GraphPane.CurveList.Add(closes);
             zedGraphControl1.GraphPane.CurveList.Add(ema21);
@@ -184,13 +184,13 @@ namespace CryptoTradingBot.WinForms
                 if (!closes4Satlik.Any())
                     return;
                 _close4Listesi.Clear();
-                _ema21Listesi.Clear();
+                _sma21Listesi.Clear();
                 var count = closes4Satlik.Count;
                 var sma21 = closes4Satlik.Sma(21);
                 for (int i = 0; i < count; i++)
                 {
                     _listeyeEkle(_close4Listesi, zedGraphControl1, i, Convert.ToDouble(closes4Satlik[i]));
-                    _listeyeEkle(_ema21Listesi, zedGraphControl1, i, Convert.ToDouble(sma21[i]));
+                    _listeyeEkle(_sma21Listesi, zedGraphControl1, i, Convert.ToDouble(sma21[i]));
                     //_listeyeEkle(_hacimListesi, zedGraphControl1, i, Convert.ToDouble(hacimler[i]));
                 }
                 lblSma21.Yazdir((sma21.LastOrDefault() ?? 0.0m).ToString("0.000000000"));
